@@ -8,6 +8,7 @@ newsRouter.get('/getnews', async (req, res) => {
         const { data: rssData } = await axios.get(rssUrl);
         const json = await xml2js.parseStringPromise(rssData, { mergeAttrs: true });
         const newsItems = json.rss.channel[0].item;
+        console.log(newsItems);
         
 
 
