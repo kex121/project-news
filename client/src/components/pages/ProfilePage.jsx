@@ -111,7 +111,7 @@ export default function UserProfilePage() {
 
       <Divider sx={{ my: 2, borderColor: "#003366" }} />
 
-      <Stack direction="row" spacing={3}>
+      <Stack direction={{ xs: 'column', sm: 'row' }} spacing={3}>
         <Stack
           flex={1}
           spacing={2}
@@ -121,6 +121,7 @@ export default function UserProfilePage() {
             padding: 3,
             border: "2px solid #003366",
             boxShadow: "0px 4px 20px rgba(0, 0, 0, 0.1)",
+            flexWrap: 'wrap',
           }}
         >
           <Box
@@ -162,7 +163,7 @@ export default function UserProfilePage() {
                   alignItems: "center",
                   borderRadius: 2,
                   borderColor: "#1e90ff",
-                  flexBasis: "48%",
+                  flexBasis: { xs: "98%", sm: "48%" },
                 }}
               >
                 <CardContent sx={{ flexGrow: 1 }}>
@@ -189,6 +190,7 @@ export default function UserProfilePage() {
             padding: 3,
             border: "2px solid #ff6347",
             boxShadow: "0px 4px 20px rgba(0, 0, 0, 0.1)",
+            flexWrap: 'wrap',
           }}
         >
           <Box
@@ -230,11 +232,11 @@ export default function UserProfilePage() {
                   alignItems: "center",
                   borderRadius: 2,
                   borderColor: "#ff6347",
-                  flexBasis: "48%",
+                  flexBasis: { xs: "98%", sm: "48%" },
                 }}
               >
                 <CardContent sx={{ flexGrow: 1 }}>
-                  <Typography sx={{ color: "#003366" }}>{word.name}</Typography>
+                  <Typography sx={{ color: "#ff6347" }}>{word.name}</Typography>
                 </CardContent>
                 <IconButton
                   onClick={() => handleDelete(word.id)}
@@ -249,15 +251,14 @@ export default function UserProfilePage() {
         </Stack>
       </Stack>
 
-      <Dialog open={openAddDialog} onClose={() => setOpenAddDialog(false)}>
-        <DialogTitle sx={{ color: "#003366" }}>
-          Добавить {isGood ? "ключевое слово" : "слово-исключение"}
-        </DialogTitle>
+      <Dialog open={openAddDialog} onClose={() => setOpenAddDialog(false)} disableScrollLock>
+        <DialogTitle>{isGood ? "Добавить ключевое слово" : "Добавить слово-исключение"}</DialogTitle>
         <DialogContent>
           <TextField
             autoFocus
             margin="dense"
-            label="Новое слово"
+            id="name"
+            label="Ключевое слово"
             type="text"
             fullWidth
             variant="outlined"
@@ -266,12 +267,8 @@ export default function UserProfilePage() {
           />
         </DialogContent>
         <DialogActions>
-          <Button onClick={() => setOpenAddDialog(false)} color="secondary">
-            Отмена
-          </Button>
-          <Button onClick={handleAddKeyword} color="primary">
-            Добавить
-          </Button>
+          <Button onClick={() => setOpenAddDialog(false)}>Отмена</Button>
+          <Button onClick={handleAddKeyword}>Добавить</Button>
         </DialogActions>
       </Dialog>
     </Box>

@@ -32,7 +32,7 @@ function NavBar() {
   };
 
   return (
-    <AppBar position="static" sx={{ backgroundColor: '#003366' }}>
+    <AppBar position="static" sx={{ backgroundColor: '#003366'}}>
       <Container maxWidth="xl">
         <Toolbar disableGutters>
           <Link to="/" style={{ textDecoration: 'none', color: 'inherit' }}>
@@ -44,8 +44,8 @@ function NavBar() {
           <Box sx={{ flexGrow: 1 }} />
 
           <Box sx={{ flexGrow: 0 }}>
-            <IconButton onClick={handleOpenUserMenu} sx={{ p: 0 }}>
-              <Avatar alt="Remy Sharp" src="profile-user.png" />
+            <IconButton onClick={handleOpenUserMenu} >
+              <Avatar alt="Profile" src="profile-user.png" />
             </IconButton>
             <Menu
               sx={{ mt: '45px' }}
@@ -62,6 +62,7 @@ function NavBar() {
               }}
               open={Boolean(anchorElUser)}
               onClose={handleCloseUserMenu}
+              disableScrollLock
             >
               {settings.map((setting) => (
                 <MenuItem key={setting} onClick={() => handleMenuClick(setting)}>
