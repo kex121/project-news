@@ -5,13 +5,12 @@ import axiosInstance from "../../services/axiosInstance";
 const SearchPage = () => {
   const [news, setNews] = useState([]);
   const [tags, setTags] = useState([]);
-  const [showNews, setShowNews] = useState(false); // для контроля показа новостей
+  const [showNews, setShowNews] = useState(false);
 
   useEffect(() => {
-    // Функция для загрузки тегов пользователя
     const fetchTags = async () => {
       try {
-        const userId = 4; // Замените на актуальный ID пользователя, если доступен
+        const userId = 4;
         const response = await axiosInstance.get(`/words/${userId}`);
         setTags(response.data);
       } catch (error) {
@@ -22,12 +21,11 @@ const SearchPage = () => {
     fetchTags();
   }, []);
 
-  // Функция для загрузки новостей
   const fetchNews = async () => {
     try {
       const response = await axiosInstance.get("/news/getnews");
       setNews(response.data.news);
-      setShowNews(true); // Показываем новости после их загрузки
+      setShowNews(true);
     } catch (error) {
       console.error("Ошибка при загрузке новостей:", error);
     }
@@ -50,7 +48,7 @@ const SearchPage = () => {
           borderRadius: 2,
           maxWidth: 800,
           width: "100%",
-          marginBottom: 4, // добавляем отступ снизу
+          marginBottom: 4,
         }}
       >
         <Typography variant="h5" color="white" align="center" gutterBottom>
@@ -68,7 +66,6 @@ const SearchPage = () => {
         </Typography>
       </Paper>
 
-      {/* Отображение списка тегов */}
       <Box
         display="flex"
         flexDirection="column"
@@ -95,7 +92,6 @@ const SearchPage = () => {
         </Box>
       </Box>
 
-      {/* Кнопка для получения новостей */}
       <Box display="flex" justifyContent="center" mb={4}>
         <Button
           variant="contained"
@@ -107,7 +103,6 @@ const SearchPage = () => {
         </Button>
       </Box>
 
-      {/* Отображение списка новостей после нажатия кнопки */}
       {showNews && (
         <Box
           display="flex"
@@ -141,6 +136,12 @@ const SearchPage = () => {
                 <Typography variant="body2" color="gray" gutterBottom>
                   {item.description || "Без описания"}
                 </Typography>
+                {item.publishedAt && (
+                  <Typography variant="caption" color="gray" display="block">
+                    Дата публикации:{" "}
+                    {new Date(item.publishedAt).toLocaleDateString()}
+                  </Typography>
+                )}
                 {item.imageUrl && (
                   <Box
                     component="img"
