@@ -26,7 +26,7 @@ app.use('/api/tokens', tokensRouter);
 
 app.use('/api/news', newsRouter)
 
-app.use('/api/words', keyWordsRouter)
+app.use('/api/keywords', keyWordsRouter)
 
 
 app.listen(PORT, () => {
