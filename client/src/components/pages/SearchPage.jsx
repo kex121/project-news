@@ -1,5 +1,5 @@
-import { useState, useEffect } from "react";
-import { Box, Typography, Paper, Link, Chip, Button } from "@mui/material";
+import React, { useState, useEffect } from "react";
+import { Box, Typography, Paper, Chip, Button } from "@mui/material";
 import axiosInstance from "../../services/axiosInstance";
 
 const SearchPage = () => {
@@ -11,7 +11,7 @@ const SearchPage = () => {
     const fetchTags = async () => {
       try {
         const userId = 4;
-        const response = await axiosInstance.get(`/words/${userId}`);
+        const response = await axiosInstance.get(`/keywords/${userId}`);
         setTags(response.data);
       } catch (error) {
         console.error("Ошибка при загрузке тегов:", error);
@@ -33,71 +33,98 @@ const SearchPage = () => {
 
   return (
     <Box
-      display="flex"
-      justifyContent="center"
-      alignItems="center"
-      flexDirection="column"
-      minHeight="100vh"
-      bgcolor="#1a1a1a"
+      sx={{
+        display: "flex",
+        flexDirection: "column",
+        alignItems: "center",
+        minHeight: "100vh",
+        padding: "20px",
+        backgroundColor: "#f0f4f8",
+        backgroundImage: "url(/BG.webp)",
+        backgroundSize: "cover",
+        backgroundAttachment: "fixed",
+        color: "#003366",
+      }}
     >
       <Paper
-        elevation={3}
         sx={{
           padding: 4,
-          bgcolor: "#222",
-          borderRadius: 2,
-          maxWidth: 800,
+          backgroundColor: "#ffffffcc",
+          borderRadius: 3,
+          boxShadow: "0px 4px 20px rgba(0, 0, 0, 0.1)",
           width: "100%",
-          marginBottom: 4,
+          maxWidth: 800,
+          border: "2px solid #003366",
         }}
       >
-        <Typography variant="h5" color="white" align="center" gutterBottom>
+        <Typography
+          variant="h5"
+          align="center"
+          sx={{ color: "#003366", fontWeight: "bold" }}
+        >
           Добро пожаловать на наш новостной портал!
         </Typography>
-        <Typography variant="body1" color="gray" align="center" gutterBottom>
+        <Typography
+          variant="body1"
+          align="center"
+          sx={{ color: "#003366", marginBottom: 2 }}
+        >
           Мы понимаем, что не все новости приносят радость, и иногда хочется
           оградить себя от негативной информации. Наше приложение предлагает
           уникальную возможность адаптировать новостную ленту под ваши интересы.
-          Добавьте теги с темами, которые вам интересны, и исключите слова,
-          которые вы не хотите видеть в новостях. Войдя в свой аккаунт, вы
-          сможете наслаждаться новостями, подобранными по вашим предпочтениям, и
-          избежать нежелательных тем. Создайте комфортную новостную ленту именно
-          для вас!
         </Typography>
       </Paper>
 
       <Box
-        display="flex"
-        flexDirection="column"
-        alignItems="center"
-        mb={4}
-        width="100%"
-        maxWidth={800}
+        sx={{
+          display: "flex",
+          flexDirection: "column",
+          alignItems: "center",
+          marginTop: 4,
+          width: "100%",
+          maxWidth: 800,
+          backgroundColor: "#ffffffcc",
+          padding: 3,
+          borderRadius: 2,
+          border: "2px solid #003366",
+        }}
       >
-        <Typography variant="h6" color="white" gutterBottom>
+        <Typography variant="h6" sx={{ color: "#003366", fontWeight: "bold" }}>
           Ваши тэги для поиска:
         </Typography>
-        <Box display="flex" flexWrap="wrap" gap={1} justifyContent="center">
+        <Box
+          display="flex"
+          flexWrap="wrap"
+          gap={1}
+          justifyContent="center"
+          sx={{ marginTop: 2 }}
+        >
           {tags.map((tag) => (
             <Chip
               key={tag.id}
               label={tag.name}
               sx={{
-                color: "white",
-                bgcolor: tag.isGood ? "green" : "red",
-                "& .MuiChip-label": { fontWeight: "bold" },
+                color: "#ffffff",
+                backgroundColor: tag.isGood ? "#1e90ff" : "#ff6347",
+                fontWeight: "bold",
               }}
             />
           ))}
         </Box>
       </Box>
 
-      <Box display="flex" justifyContent="center" mb={4}>
+      <Box display="flex" justifyContent="center" marginTop={4}>
         <Button
           variant="contained"
-          color="primary"
           onClick={fetchNews}
-          sx={{ paddingX: 4 }}
+          sx={{
+            backgroundColor: "#003366",
+            color: "#ffffff",
+            "&:hover": {
+              backgroundColor: "#1e90ff",
+            },
+            paddingX: 4,
+          }}
         >
           Получить новости на сегодня
         </Button>
@@ -105,39 +132,52 @@ const SearchPage = () => {
 
       {showNews && (
         <Box
-          display="flex"
-          flexDirection="column"
-          alignItems="center"
-          bgcolor="#1a1a1a"
-          color="white"
-          padding={2}
-          borderRadius={2}
-          sx={{ width: "100%", maxWidth: 800 }}
+          sx={{
+            display: "flex",
+            flexDirection: "column",
+            alignItems: "center",
+            backgroundColor: "#ffffffcc",
+            color: "#003366",
+            padding: 3,
+            borderRadius: 2,
+            marginTop: 4,
+            width: "100%",
+            maxWidth: 800,
+            border: "2px solid #003366",
+          }}
         >
-          <Typography variant="h6" gutterBottom>
+          <Typography variant="h6" sx={{ color: "#003366" }} gutterBottom>
             Новости
           </Typography>
           {news.length > 0 ? (
             news.map((item, index) => (
               <Paper
                 key={index}
-                variant="outlined"
                 sx={{
-                  bgcolor: "#222",
-                  color: "white",
-                  width: "100%",
-                  maxWidth: 600,
+                  backgroundColor: "#ffffff",
+                  color: "#003366",
                   padding: 2,
                   marginBottom: 2,
-                  borderColor: "gray",
+                  borderRadius: 2,
+                  border: "1px solid #003366",
                 }}
               >
-                <Typography variant="h6">{item.title}</Typography>
-                <Typography variant="body2" color="gray" gutterBottom>
+                <Typography variant="h6" sx={{ color: "#003366" }}>
+                  {item.title}
+                </Typography>
+                <Typography
+                  variant="body2"
+                  sx={{ color: "#003366" }}
+                  gutterBottom
+                >
                   {item.description || "Без описания"}
                 </Typography>
                 {item.publishedAt && (
-                  <Typography variant="caption" color="gray" display="block">
+                  <Typography
+                    variant="caption"
+                    sx={{ color: "#003366" }}
+                    display="block"
+                  >
                     Дата публикации:{" "}
                     {new Date(item.publishedAt).toLocaleDateString()}
                   </Typography>
@@ -147,22 +187,26 @@ const SearchPage = () => {
                     component="img"
                     src={item.imageUrl}
                     alt={item.title}
-                    width="100%"
-                    sx={{ marginY: 2 }}
+                    sx={{
+                      width: "100%",
+                      borderRadius: 2,
+                      marginTop: 1,
+                    }}
                   />
                 )}
-                <Link
+                <Button
                   href={item.link}
                   target="_blank"
-                  color="inherit"
-                  underline="hover"
+                  sx={{ color: "#003366", fontWeight: "bold", marginTop: 1 }}
                 >
                   Читать далее
-                </Link>
+                </Button>
               </Paper>
             ))
           ) : (
-            <Typography>Нет доступных новостей</Typography>
+            <Typography sx={{ color: "#003366" }}>
+              Нет доступных новостей
+            </Typography>
           )}
         </Box>
       )}
