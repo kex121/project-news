@@ -4,24 +4,3 @@
     padding: 0;
     box-sizing: border-box;
 }
-
-/* Устанавливаем высоту на всю страницу и применяем фоновое изображение */
-html, body {
-    height: 100%;
-    font-family: 'Roboto', sans-serif;
-    background-image: url('./components/ui/'); /* Укажите правильный путь к изображению */
-    background-size: cover;
-    background-repeat: no-repeat;
-    background-attachment: fixed; /* Фиксируем фон для эффекта параллакса */
-    color: #fff; /* Цвет текста для лучшей читаемости на темном фоне */
-}
-
-/* Центрируем основной контент */
-.container {
-    display: flex;
-    flex-direction: column;
-    align-items: center;
-    justify-content: center;
-    min-height: 100vh;
-    padding: 20px;
-}
