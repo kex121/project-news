@@ -1,4 +1,5 @@
-import * as React from 'react';
+import React from 'react';
+import { useNavigate, Link } from 'react-router-dom';
 import AppBar from '@mui/material/AppBar';
 import Box from '@mui/material/Box';
 import Toolbar from '@mui/material/Toolbar';
@@ -6,15 +7,14 @@ import IconButton from '@mui/material/IconButton';
 import Typography from '@mui/material/Typography';
 import Container from '@mui/material/Container';
 import Avatar from '@mui/material/Avatar';
-import Tooltip from '@mui/material/Tooltip';
 import Menu from '@mui/material/Menu';
 import MenuItem from '@mui/material/MenuItem';
-import AdbIcon from '@mui/icons-material/Adb';
 
-const settings = ['Profile', 'Account', 'Dashboard', 'Logout'];
+const settings = ['Profile', 'Logout'];
 
 function NavBar() {
   const [anchorElUser, setAnchorElUser] = React.useState(null);
+  const navigate = useNavigate();
 
   const handleOpenUserMenu = (event) => {
     setAnchorElUser(event.currentTarget);
@@ -24,39 +24,29 @@ function NavBar() {
     setAnchorElUser(null);
   };
 
+  const handleMenuClick = (setting) => {
+    if (setting === 'Profile') {
+      navigate('/profile');
+    }
+    handleCloseUserMenu();
+  };
+
   return (
-    <AppBar position="static">
+    <AppBar position="static" sx={{ backgroundColor: '#003366' }}>
       <Container maxWidth="xl">
         <Toolbar disableGutters>
-          {/* Логотип */}
-          <AdbIcon sx={{ display: { xs: 'none', md: 'flex' }, mr: 1 }} />
-          <Typography
-            variant="h6"
-            noWrap
-            component="a"
-            href="#"
-            sx={{
-              mr: 2,
-              display: { xs: 'none', md: 'flex' },
-              fontFamily: 'monospace',
-              fontWeight: 700,
-              letterSpacing: '.3rem',
-              color: 'inherit',
-              textDecoration: 'none',
-            }}
-          >
-            LOGO
-          </Typography>
+          <Link to="/" style={{ textDecoration: 'none', color: 'inherit' }}>
+            <Typography variant="h6" noWrap component="div" sx={{ mr: 2 }}>
+              Good news
+            </Typography>
+          </Link>
 
           <Box sx={{ flexGrow: 1 }} />
 
-          {/* Профиль */}
           <Box sx={{ flexGrow: 0 }}>
-            <Tooltip title="Open settings">
-              <IconButton onClick={handleOpenUserMenu} sx={{ p: 0 }}>
-                <Avatar alt="Аватар" src="profile-user.png" />
-              </IconButton>
-            </Tooltip>
+            <IconButton onClick={handleOpenUserMenu} sx={{ p: 0 }}>
+              <Avatar alt="Remy Sharp" src="profile-user.png" />
+            </IconButton>
             <Menu
               sx={{ mt: '45px' }}
               id="menu-appbar"
@@ -74,7 +64,7 @@ function NavBar() {
               onClose={handleCloseUserMenu}
             >
               {settings.map((setting) => (
-                <MenuItem key={setting} onClick={handleCloseUserMenu}>
+                <MenuItem key={setting} onClick={() => handleMenuClick(setting)}>
                   <Typography sx={{ textAlign: 'center' }}>{setting}</Typography>
                 </MenuItem>
               ))}

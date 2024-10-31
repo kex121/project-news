@@ -32,6 +32,7 @@ newsRouter.get('/getnews', async (req, res) => {
         res.json({ news: filteredNews });
     } catch (error) {
         console.error(error);
+        console.log(error)
         res.status(500).json({ error: 'Ошибка при получении новостей' });
     }
 });

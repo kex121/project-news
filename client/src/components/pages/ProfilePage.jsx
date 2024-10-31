@@ -76,13 +76,12 @@ export default function UserProfilePage() {
         padding: 8,
         backgroundColor: "#f0f4f8",
         minHeight: "100vh",
-        backgroundImage: "url(/BG.webp)", // Укажите правильный путь к изображению с гжельским узором
+        backgroundImage: "url(/BG.webp)",
         backgroundSize: "cover",
         backgroundAttachment: "fixed",
         color: "#003366",
       }}
     >
-      {/* User Information */}
       <Box
         sx={{
           display: "flex",
@@ -112,9 +111,7 @@ export default function UserProfilePage() {
 
       <Divider sx={{ my: 2, borderColor: "#003366" }} />
 
-      {/* Keywords and Exclusion Words */}
       <Stack direction="row" spacing={3}>
-        {/* Good Words Section */}
         <Stack
           flex={1}
           spacing={2}
@@ -183,7 +180,6 @@ export default function UserProfilePage() {
           </Box>
         </Stack>
 
-        {/* Exception Words Section */}
         <Stack
           flex={1}
           spacing={2}
@@ -253,7 +249,6 @@ export default function UserProfilePage() {
         </Stack>
       </Stack>
 
-      {/* Add Keyword Dialog */}
       <Dialog open={openAddDialog} onClose={() => setOpenAddDialog(false)}>
         <DialogTitle sx={{ color: "#003366" }}>
           Добавить {isGood ? "ключевое слово" : "слово-исключение"}

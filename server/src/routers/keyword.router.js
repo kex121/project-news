@@ -6,7 +6,7 @@ keyWordsRouter.get('/:userId', async (req, res) => {
 
   // const userId = res.locals.user.id;
   try {
-    const keyWords = await KeyWord.findAll({ where: { userId: 2 } });
+    const keyWords = await KeyWord.findAll({ where: { userId: 4 } });
     res.status(200).json(keyWords);
   } catch (error) {
     console.log(error);
@@ -16,11 +16,11 @@ keyWordsRouter.get('/:userId', async (req, res) => {
 
 keyWordsRouter.post('/', async (req, res) => {
   try {
-    const { name, isGood, userId } = req.body;
+    const { name, isGood } = req.body;
     const newKeyWord = await KeyWord.create({
       name,
       isGood,
-      userId
+      userId: 4
     })
     res.status(201).json(newKeyWord);
   } catch (error) {
