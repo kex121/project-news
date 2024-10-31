@@ -2,9 +2,11 @@ const keyWordsRouter = require('express').Router();
 const { KeyWord } = require('../../db/models');
 
 keyWordsRouter.get('/:userId', async (req, res) => {
+    const userId = 4;
+
   // const userId = res.locals.user.id;
   try {
-    const keyWords = await KeyWord.findAll({ where: { userId: 2 } });
+    const keyWords = await KeyWord.findAll({ where: { userId: 4 } });
     res.status(200).json(keyWords);
   } catch (error) {
     console.log(error);

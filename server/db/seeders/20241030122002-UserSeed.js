@@ -27,6 +27,13 @@ module.exports = {
           createdAt: new Date(),
           updatedAt: new Date(),
         },
+        {
+          name: 'aaboba',
+          email: 'aaboba@aboba',
+          pass: hashSync('123', 10),
+          createdAt: new Date(),
+          updatedAt: new Date(),
+        },
       ],
       {},
     );

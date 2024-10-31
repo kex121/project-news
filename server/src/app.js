@@ -12,7 +12,7 @@ const tokensRouter = require('./routers/token.router');
 const keyWordsRouter = require('./routers/keyword.router');
 
 const corsConfig = {
-  origin: ['http://localhost:5173', 'http://127.0.0.1:5173'],
+  origin: ['http://localhost:5173', 'http://127.0.0.1:5173', 'https://news.ru/rss/category/post/economics/'],
   credentials: true,
 };
 app.use(cors(corsConfig));
