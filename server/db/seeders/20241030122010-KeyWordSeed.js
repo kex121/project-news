@@ -35,26 +35,20 @@ module.exports = {
           updatedAt: new Date(),
         },
         {
-          name: 'США',
+          name: 'Кот',
           isGood: true,
           userId: 4,
           createdAt: new Date(),
           updatedAt: new Date(),
         },
         {
-          name: 'Франция',
+          name: 'спалил',
           isGood: false,
           userId: 4,
           createdAt: new Date(),
           updatedAt: new Date(),
         },
-        {
-          name: 'Франции',
-          isGood: false,
-          userId: 4,
-          createdAt: new Date(),
-          updatedAt: new Date(),
-        },
+
 
       ],
       {},
