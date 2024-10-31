@@ -34,6 +34,13 @@ module.exports = {
           createdAt: new Date(),
           updatedAt: new Date(),
         },
+        {
+          name: 'Путин',
+          isGood: true,
+          userId: 4,
+          createdAt: new Date(),
+          updatedAt: new Date(),
+        }
       ],
       {},
     );

@@ -4,6 +4,7 @@ const cookieParser = require('cookie-parser');
 const express = require('express');
 const app = express();
 const cors = require('cors');
+const newsRouter = require('../src/routers/news.router')
 
 const { PORT } = process.env;
 
@@ -22,7 +23,12 @@ app.use(express.urlencoded({ extended: true }));
 app.use(express.json());
 
 app.use('/api/tokens', tokensRouter);
+
+app.use('/api/news', newsRouter)
+
 app.use('/api/words', keyWordsRouter)
 
-app.listen(PORT, () => {console.log(`Server started at ${PORT} port`);
+
+app.listen(PORT, () => {
+  console.log(`Server started at ${PORT} port`);
 });

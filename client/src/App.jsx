@@ -1,12 +1,16 @@
-import { useState } from 'react'
+import { useState } from "react";
+import SearchPage from "./components/pages/SearchPage";
+import { createBrowserRouter, RouterProvider } from "react-router-dom";
 
 function App() {
-
-  return (
-    <>
-      <h1>Привет</h1>
-    </>
-  )
+  const routes = [
+    {
+      path: "/SearchPage",
+      element: <SearchPage />,
+    },
+  ];
+  const router = createBrowserRouter(routes);
+  return <RouterProvider router={router} />;
 }
 
 export default App;
