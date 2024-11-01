@@ -19,16 +19,17 @@ import {
 import DeleteIcon from "@mui/icons-material/Clear";
 import AddIcon from "@mui/icons-material/Add";
 
-export default function UserProfilePage() {
+export default function ProfilePage({ user }) {
   const [keyWords, setKeyWords] = useState([]);
   const [openAddDialog, setOpenAddDialog] = useState(false);
   const [newKeyword, setNewKeyword] = useState("");
   const [isGood, setIsGood] = useState(true);
 
   useEffect(() => {
+    console.log('PROFILE USER', user)
     const fetchKeyWords = async () => {
       try {
-        const response = await axiosInstance.get(`/keywords/2`);
+        const response = await axiosInstance.get(`/keywords/${user.id}`);
         setKeyWords(response.data);
       } catch (error) {
         console.error(error);
@@ -51,7 +52,7 @@ export default function UserProfilePage() {
     try {
       const response = await axiosInstance.post(`/keywords`, {
         name: newKeyword,
-        userId: 2,
+        userId: user.id,
         isGood,
       });
       setKeyWords([...keyWords, response.data]);
@@ -69,7 +70,7 @@ export default function UserProfilePage() {
 
   const goodWords = keyWords.filter((word) => word.isGood);
   const exceptionWords = keyWords.filter((word) => !word.isGood);
-
+  
   return (
     <Box
       sx={{
@@ -273,4 +274,6 @@ export default function UserProfilePage() {
       </Dialog>
     </Box>
   );
+
+  
 }

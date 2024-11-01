@@ -2,7 +2,7 @@ import React, { useState, useEffect } from "react";
 import { Box, Typography, Paper, Chip, Button } from "@mui/material";
 import axiosInstance from "../../services/axiosInstance";
 
-const SearchPage = () => {
+const SearchPage = ({ user }) => {
   const [news, setNews] = useState([]);
   const [tags, setTags] = useState([]);
   const [showNews, setShowNews] = useState(false);
@@ -10,7 +10,7 @@ const SearchPage = () => {
   useEffect(() => {
     const fetchTags = async () => {
       try {
-        const userId = 4;
+        const userId = user?.id;
         const response = await axiosInstance.get(`/keywords/${userId}`);
         setTags(response.data);
       } catch (error) {
@@ -92,7 +92,7 @@ const SearchPage = () => {
         <Typography variant="h6" sx={{ color: "#003366", fontWeight: "bold" }}>
           Ваши тэги для поиска:
         </Typography>
-        <Box
+        {user ? (<Box
           display="flex"
           flexWrap="wrap"
           gap={1}
@@ -110,7 +110,7 @@ const SearchPage = () => {
               }}
             />
           ))}
-        </Box>
+        </Box>) : null}
       </Box>
 
       <Box display="flex" justifyContent="center" marginTop={4}>

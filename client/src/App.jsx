@@ -52,6 +52,8 @@ function App() {
     }
   };
 
+  {console.log("APP user", user)}
+
   const routes = [
     {
       path: '/',
@@ -59,11 +61,11 @@ function App() {
       children: [
         {
           path: "/",
-          element: <SearchPage />,
+          element: <SearchPage user={user}/>,
         },
         {
           path: "/profile",
-          element: <ProfilePage />,
+          element: <ProfilePage user={user}/>,
         },
         {
           path: "/signin",
@@ -78,7 +80,6 @@ function App() {
   ];
   const router = createBrowserRouter(routes);
   return <><RouterProvider router={router} />;
-  {console.log(user)}
   </>
 }
 
