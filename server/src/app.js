@@ -10,6 +10,7 @@ const { PORT } = process.env;
 
 const tokensRouter = require('./routers/token.router');
 const keyWordsRouter = require('./routers/keyword.router');
+const authRouter = require('./routers/authRouter');
 
 const corsConfig = {
   origin: ['http://localhost:5173', 'http://127.0.0.1:5173', 'https://news.ru/rss/category/post/economics/'],
@@ -22,11 +23,14 @@ app.use(morgan('dev'));
 app.use(express.urlencoded({ extended: true }));
 app.use(express.json());
 
+app.use('/api/auth', authRouter);
+
 app.use('/api/tokens', tokensRouter);
 
 app.use('/api/news', newsRouter)
 
 app.use('/api/keywords', keyWordsRouter)
+
 
 
 app.listen(PORT, () => {

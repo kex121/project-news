@@ -59,7 +59,7 @@ const SignUpContainer = styled(Stack)(({ theme }) => ({
   },
 }));
 
-export default function SignUp(props) {
+export default function SignUp({handleSignUp}) {
   const [emailError, setEmailError] = React.useState(false);
   const [emailErrorMessage, setEmailErrorMessage] = React.useState('');
   const [passwordError, setPasswordError] = React.useState(false);
@@ -119,7 +119,7 @@ export default function SignUp(props) {
   };
 
   return (
-    <AppTheme {...props}>
+    <AppTheme>
       <CssBaseline enableColorScheme />
       <ColorModeSelect sx={{ position: 'fixed', top: '1rem', right: '1rem' }} />
       <SignUpContainer direction="column" justifyContent="space-between">
@@ -134,7 +134,7 @@ export default function SignUp(props) {
           </Typography>
           <Box
             component="form"
-            onSubmit={handleSubmit}
+            onSubmit={handleSignUp}
             sx={{ display: 'flex', flexDirection: 'column', gap: 2 }}
           >
             <FormControl>
