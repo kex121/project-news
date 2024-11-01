@@ -119,12 +119,11 @@ export default function SignUp({handleSignUp}) {
   };
 
   return (
-    <AppTheme>
+    <>
       <CssBaseline enableColorScheme />
       <ColorModeSelect sx={{ position: 'fixed', top: '1rem', right: '1rem' }} />
       <SignUpContainer direction="column" justifyContent="space-between">
         <Card variant="outlined">
-          <SitemarkIcon />
           <Typography
             component="h1"
             variant="h4"
@@ -191,6 +190,7 @@ export default function SignUp({handleSignUp}) {
               fullWidth
               variant="contained"
               onClick={validateInputs}
+              sx={{ backgroundColor: '#003366'}}
             >
               Зарегистрироваться
             </Button>
@@ -209,6 +209,6 @@ export default function SignUp({handleSignUp}) {
           </Box>
         </Card>
       </SignUpContainer>
-    </AppTheme>
+    </>
   );
 }

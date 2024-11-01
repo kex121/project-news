@@ -115,12 +115,11 @@ export default function SignIn({handleSignIn}) {
   };
 
   return (
-    <AppTheme>
+    <>
       <CssBaseline enableColorScheme />
       <SignInContainer direction="column" justifyContent="space-between">
         <ColorModeSelect sx={{ position: 'fixed', top: '1rem', right: '1rem' }} />
         <Card variant="outlined">
-          <SitemarkIcon />
           <Typography
             component="h2"
             variant="h4"
@@ -184,17 +183,14 @@ export default function SignIn({handleSignIn}) {
                 variant="outlined"
                 color={passwordError ? 'error' : 'primary'}
               />
-            </FormControl>
-            <FormControlLabel
-              control={<Checkbox value="remember" color="primary" />}
-              label="Запомнить мои учетные данные"
-            />
+            </FormControl>  
             <ForgotPassword open={open} handleClose={handleClose} />
             <Button
               type="submit"
               fullWidth
               variant="contained"
               onClick={validateInputs}
+              sx={{ backgroundColor: '#003366'}}
             >
               Войти
             </Button>
@@ -213,6 +209,6 @@ export default function SignIn({handleSignIn}) {
           </Box>
         </Card>
       </SignInContainer>
-    </AppTheme>
+    </>
   );
 }
