@@ -202,7 +202,7 @@ export default function SignIn({handleSignIn}) {
               Нет учетной записи?{' '}
               <span>
                 <Link
-                  href="/material-ui/getting-started/templates/sign-in/"
+                  href="/signup"
                   variant="body2"
                   sx={{ alignSelf: 'center' }}
                 >
