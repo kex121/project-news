@@ -4,6 +4,7 @@ import SearchPage from "./components/pages/SearchPage";
 import ProfilePage from './components/pages/ProfilePage';
 import SignInPage from './components/pages/SignInPage';
 import SignUpPage from './components/pages/SignUpPage';
+import ProtectedRoute from './components/HOC/ProtectedRoute';
 import { createBrowserRouter, RouterProvider } from "react-router-dom";
 import { patch } from "@mui/material";
 import axiosInstance, { setAccessToken } from "./services/axiosInstance";
@@ -52,8 +53,6 @@ function App() {
     }
   };
 
-  {console.log("APP user", user)}
-
   const routes = [
     {
       path: '/',
@@ -68,12 +67,19 @@ function App() {
           element: <ProfilePage user={user}/>,
         },
         {
-          path: "/signin",
-          element: <SignInPage handleSignIn={handleSignIn}/>,
-        },
-        {
-          path: "/signup",
-          element: <SignUpPage handleSignUp={handleSignUp} />,
+          element: <ProtectedRoute isAllowed={user === null} />,
+          children: [
+            {
+              path: '/signup',
+              element: (
+                <SignUpPage handleSignIn={handleSignIn} />
+              ),
+            },
+            {
+              path: '/login',
+              element: <SignInPage handleSignUp={handleSignUp} />,
+            },
+          ],
         },
       ]
     }

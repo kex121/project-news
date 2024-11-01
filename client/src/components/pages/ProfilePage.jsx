@@ -37,7 +37,7 @@ export default function ProfilePage({ user }) {
     };
 
     fetchKeyWords();
-  }, []);
+  }, [user]);
 
   const handleDelete = async (id) => {
     try {
