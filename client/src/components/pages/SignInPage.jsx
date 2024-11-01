@@ -60,7 +60,7 @@ const SignInContainer = styled(Stack)(({ theme }) => ({
   },
 }));
 
-export default function SignIn(props) {
+export default function SignIn({handleSignIn}) {
   const [emailError, setEmailError] = React.useState(false);
   const [emailErrorMessage, setEmailErrorMessage] = React.useState('');
   const [passwordError, setPasswordError] = React.useState(false);
@@ -115,7 +115,7 @@ export default function SignIn(props) {
   };
 
   return (
-    <AppTheme {...props}>
+    <AppTheme>
       <CssBaseline enableColorScheme />
       <SignInContainer direction="column" justifyContent="space-between">
         <ColorModeSelect sx={{ position: 'fixed', top: '1rem', right: '1rem' }} />
@@ -130,7 +130,7 @@ export default function SignIn(props) {
           </Typography>
           <Box
             component="form"
-            onSubmit={handleSubmit}
+            onSubmit={handleSignIn}
             noValidate
             sx={{
               display: 'flex',

@@ -2,11 +2,11 @@ const keyWordsRouter = require('express').Router();
 const { KeyWord } = require('../../db/models');
 
 keyWordsRouter.get('/:userId', async (req, res) => {
-    const userId = 4;
+    // const userId = 4;
 
-  // const userId = res.locals.user.id;
+  const userId = res.locals.user.id;
   try {
-    const keyWords = await KeyWord.findAll({ where: { userId: 4 } });
+    const keyWords = await KeyWord.findAll({ where: { userId: userId } });
     res.status(200).json(keyWords);
   } catch (error) {
     console.log(error);
@@ -15,12 +15,13 @@ keyWordsRouter.get('/:userId', async (req, res) => {
 });
 
 keyWordsRouter.post('/', async (req, res) => {
+  const userId = res.locals.user.id;
   try {
     const { name, isGood } = req.body;
     const newKeyWord = await KeyWord.create({
       name,
       isGood,
-      userId: 4
+      userId: userId
     })
     res.status(201).json(newKeyWord);
   } catch (error) {
