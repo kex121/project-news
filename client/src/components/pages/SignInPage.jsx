@@ -211,25 +211,6 @@ export default function SignIn({handleSignIn}) {
               </span>
             </Typography>
           </Box>
-          <Divider>или</Divider>
-          <Box sx={{ display: 'flex', flexDirection: 'column', gap: 2 }}>
-            <Button
-              fullWidth
-              variant="outlined"
-              onClick={() => alert('Войти через Google')}
-              startIcon={<GoogleIcon />}
-            >
-              Войти через Google
-            </Button>
-            <Button
-              fullWidth
-              variant="outlined"
-              onClick={() => alert('Войти через Facebook')}
-              startIcon={<FacebookIcon />}
-            >
-              Войти через Facebook
-            </Button>
-          </Box>
         </Card>
       </SignInContainer>
     </AppTheme>

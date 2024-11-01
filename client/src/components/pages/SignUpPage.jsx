@@ -198,7 +198,7 @@ export default function SignUp({handleSignUp}) {
               Уже есть аккаунт?{' '}
               <span>
                 <Link
-                  href="/material-ui/getting-started/templates/sign-in/"
+                  href="/signin"
                   variant="body2"
                   sx={{ alignSelf: 'center' }}
                 >
@@ -206,27 +206,6 @@ export default function SignUp({handleSignUp}) {
                 </Link>
               </span>
             </Typography>
-          </Box>
-          <Divider>
-            <Typography sx={{ color: 'text.secondary' }}>или</Typography>
-          </Divider>
-          <Box sx={{ display: 'flex', flexDirection: 'column', gap: 2 }}>
-            <Button
-              fullWidth
-              variant="outlined"
-              onClick={() => alert('Войти через Google')}
-              startIcon={<GoogleIcon />}
-            >
-              Войти через Google
-            </Button>
-            <Button
-              fullWidth
-              variant="outlined"
-              onClick={() => alert('Войти через Facebook')}
-              startIcon={<FacebookIcon />}
-            >
-              Войти через Facebook
-            </Button>
           </Box>
         </Card>
       </SignUpContainer>

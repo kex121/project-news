@@ -8,29 +8,8 @@ module.exports = {
       [
         {
           name: 'John Doe',
-          email: '123@123',
-          pass: hashSync('123', 10),
-          createdAt: new Date(),
-          updatedAt: new Date(),
-        },
-        {
-          name: 'Petya',
-          email: 'petya@petya',
-          pass: hashSync('123', 10),
-          createdAt: new Date(),
-          updatedAt: new Date(),
-        },
-        {
-          name: 'aboba',
-          email: 'aboba@aboba',
-          pass: hashSync('123', 10),
-          createdAt: new Date(),
-          updatedAt: new Date(),
-        },
-        {
-          name: 'aaboba',
-          email: 'aaboba@aboba',
-          pass: hashSync('123', 10),
+          email: 'timursobolev@yandex.ru',
+          pass: hashSync('12345678', 10),
           createdAt: new Date(),
           updatedAt: new Date(),
         },

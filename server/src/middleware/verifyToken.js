@@ -9,7 +9,7 @@ const verifyRefreshToken = (req, res, next) => {
     next();
   } catch (error) {
     console.log('Invalid refresh token');
-    res.sendStatus(401).clearCookie();
+    res.sendStatus(401);
   }
 };
 

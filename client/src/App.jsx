@@ -53,7 +53,7 @@ function App() {
       location.assign('/signin');
     }
   };
-
+  console.log('APP', user)
   const routes = [
     {
       path: '/',
@@ -64,16 +64,12 @@ function App() {
           element: <SearchPage user={user}/>,
         },
         {
-          path: "/profile",
-          element: <ProfilePage user={user}/>,
-        },
-        {
           element: <ProtectedRoute isAllowed={user === null} />,
           children: [
             {
               path: '/signup',
               element: (
-                <SignUpPage handleSignUp={handleSignUp}/>
+                <SignUpPage handleSignUp={handleSignUp} />
               ),
             },
             {
@@ -82,10 +78,24 @@ function App() {
             },
           ],
         },
+        {
+          element: <ProtectedRoute isAllowed={user !== null} />,
+          children: [
+            {
+              path: "/profile",
+              element: <ProfilePage user={user}/>,
+            },  
+          ],
+        },
       ]
     }
   ];
   const router = createBrowserRouter(routes);
+  if (user === undefined) return <div className="d-flex justify-content-center align-items-center min-vh-100">
+  <div className="spinner-border" role="status">
+    <span className="visually-hidden">Loading...</span>
+  </div>
+</div>;
   return <><RouterProvider router={router} />;
   </>
 }
