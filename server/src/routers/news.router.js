@@ -6,7 +6,7 @@ const { verifyAccessToken } = require('../middleware/verifyToken');
 
 newsRouter.get('/getnews', async (req, res) => {
     try {
-        const userId = res.locals.user.id;
+        const userId = res.locals.user?.id;
 
         const keywords = await KeyWord.findAll({ where: { userId } });
         const positiveKeywords = keywords.filter(k => k.isGood).map(k => k.name);

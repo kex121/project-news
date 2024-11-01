@@ -5,6 +5,7 @@ import Box from '@mui/material/Box';
 import Toolbar from '@mui/material/Toolbar';
 import IconButton from '@mui/material/IconButton';
 import Typography from '@mui/material/Typography';
+import Button from '@mui/material/Button';
 import Container from '@mui/material/Container';
 import Avatar from '@mui/material/Avatar';
 import Menu from '@mui/material/Menu';
@@ -12,7 +13,7 @@ import MenuItem from '@mui/material/MenuItem';
 
 const settings = ['Profile', 'Logout'];
 
-function NavBar() {
+function NavBar({ user }) {
   const [anchorElUser, setAnchorElUser] = React.useState(null);
   const navigate = useNavigate();
 
@@ -27,6 +28,8 @@ function NavBar() {
   const handleMenuClick = (setting) => {
     if (setting === 'Profile') {
       navigate('/profile');
+    } else if (setting === 'Logout') {
+      navigate('/signout');
     }
     handleCloseUserMenu();
   };
@@ -43,7 +46,7 @@ function NavBar() {
 
           <Box sx={{ flexGrow: 1 }} />
 
-          <Box sx={{ flexGrow: 0 }}>
+          {user ? (<Box sx={{ flexGrow: 0 }}>
             <IconButton onClick={handleOpenUserMenu} >
               <Avatar alt="Profile" src="profile-user.png" />
             </IconButton>
@@ -70,7 +73,26 @@ function NavBar() {
                 </MenuItem>
               ))}
             </Menu>
-          </Box>
+          </Box>) : (
+            <Box sx={{ display: 'flex', gap: 2 }}>
+              <Button
+                component={Link}
+                to="/signin"
+                variant="outlined"
+                sx={{ color: 'white', borderColor: 'white' }}
+              >
+                Войти
+              </Button>
+              <Button
+                component={Link}
+                to="/signup"
+                variant="contained"
+                sx={{ backgroundColor: 'white', color: '#003366' }}
+              >
+                Зарегистрироваться
+              </Button>
+            </Box>
+          )}
         </Toolbar>
       </Container>
     </AppBar>

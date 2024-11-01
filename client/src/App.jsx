@@ -1,4 +1,4 @@
-import { useState } from "react";
+import { useState, useEffect } from "react";
 import Root from './components/ui/Root';
 import SearchPage from "./components/pages/SearchPage";
 import ProfilePage from './components/pages/ProfilePage';
@@ -55,7 +55,7 @@ function App() {
   const routes = [
     {
       path: '/',
-      element: <Root/>,
+      element: <Root user={user}/>,
       children: [
         {
           path: "/",

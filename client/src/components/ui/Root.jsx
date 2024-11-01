@@ -1,10 +1,10 @@
 import NavBar from './NavBar';
 import { Outlet } from 'react-router-dom';
 
-export default function Root() {
+export default function Root({ user }) {
   return (
     <>
-      <NavBar/>
+      <NavBar user={user}/>
       <Outlet />
     </>
   );
