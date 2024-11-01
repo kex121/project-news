@@ -95,17 +95,17 @@ export default function ProfilePage({ user }) {
         }}
       >
         <Avatar sx={{ bgcolor: "primary.main", mr: 2, width: 44, height: 44 }}>
-          А
+        {user.name.charAt(0).toUpperCase()}
         </Avatar>
         <Box>
           <Typography
             variant="h5"
             sx={{ fontWeight: "bold", color: "#003366" }}
           >
-            Имя
+            {user.name}
           </Typography>
           <Typography variant="body2" color="text.secondary">
-            Почта
+          {user.email}
           </Typography>
         </Box>
       </Box>

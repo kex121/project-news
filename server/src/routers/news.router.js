@@ -4,7 +4,7 @@ const { KeyWord } = require('../../db/models');
 const { verifyAccessToken } = require('../middleware/verifyToken');
 
 
-newsRouter.get('/getnews', async (req, res) => {
+newsRouter.get('/getnews', verifyAccessToken, async (req, res) => {
     try {
         const userId = res.locals.user?.id;
 

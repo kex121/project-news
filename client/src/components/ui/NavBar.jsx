@@ -13,7 +13,7 @@ import MenuItem from '@mui/material/MenuItem';
 
 const settings = ['Profile', 'Logout'];
 
-function NavBar({ user }) {
+function NavBar({ user, handleSignOut }) {
   const [anchorElUser, setAnchorElUser] = React.useState(null);
   const navigate = useNavigate();
 
@@ -29,7 +29,8 @@ function NavBar({ user }) {
     if (setting === 'Profile') {
       navigate('/profile');
     } else if (setting === 'Logout') {
-      navigate('/signout');
+      handleSignOut();
+      // navigate('/signin');
     }
     handleCloseUserMenu();
   };
