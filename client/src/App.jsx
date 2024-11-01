@@ -10,17 +10,17 @@ import axiosInstance, { setAccessToken } from "./services/axiosInstance";
 
 function App() {
   const [user, setUser] = useState();
-  // useEffect(() => {
-  //   axiosInstance('/tokens/refresh')
-  //   .then((res) => {
-  //     setUser(res.data.user);
-  //     setAccessToken(res.data.accessToken);
-  //   })
-  //   .catch(() => {
-  //     setUser(null);
-  //     setAccessToken('');
-  // })
-  // }, []);
+  useEffect(() => {
+    axiosInstance('/tokens/refresh')
+    .then((res) => {
+      setUser(res.data.user);
+      setAccessToken(res.data.accessToken);
+    })
+    .catch(() => {
+      setUser(null);
+      setAccessToken('');
+  })
+  }, []);
 
   const handleSignUp = async (e) => {
     e.preventDefault();
